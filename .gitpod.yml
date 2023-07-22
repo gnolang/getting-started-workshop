@@ -53,4 +53,4 @@ github:
 
 vscode:
   extensions:
-    - https://marketplace.visualstudio.com/_apis/public/gallery/publishers/harry-hov/vsextensions/gno/0.0.10/vspackage
+    - harry-hov.gno
