@@ -1,19 +1,22 @@
-# Getting Started with Gno
+# :magic_wand: Getting Started with Gno
 
-Welcome to the world of Gno! This repo is designed to help you effortlessly begin your journey into writing your first Gnolang Realm.
+Welcome to the world of Gno! Through this repository, you can effortlessly embark on a journey to write your first Gno realm -- otherwise known as a smart contract.
 
 ## Suggested Discovery Plan
 
-1. Learn to use the `gno` CLI to write and test (`gno test [PATH]`) your contracts without relying on a blockchain.
-2. Master `gnokey` for managing your account and performing transactions.
-3. Discover how to publish contracts on your local devnet.
-4. Obtain faucet tokens and publish your contracts on https://staging.gno.land or another testnet.
+1. Check out the tutorial section of [Awesome Gno](https://github.com/gnolang/awesome-gno#tutorials) and explore the [YouTube channel](https://www.youtube.com/@_gnoland/videos) for previous workshops and demos.
+2. Learn to use the `gno` CLI to write and test your contracts (`gno test [PATH]`) without relying on a blockchain. It offers speed and convenience, and works similarly to the `go` command line tool.
+3. Master `gnokey` for account management and performing transactions.
+4. Discover how to publish contracts on your local devnet.
+5. Obtain faucet tokens and publish your contracts on https://staging.gno.land or another testnet.
+6. Start building more complex dApps, utilizing realms (`/r/...`) and pure packages (`/p/...`) you create or those crafted by the community. Leverage the `Render()` function for smooth interactions.
+7. Experiment with creating web frontends or new clients to engage with the chain and your contracts.
 
 ## Using Gitpod
 
-Gitpod makes it easy to start by providing a `gnoland` node, a `gnoweb` server, and a pre-configured terminal with the `gno` CLI.
+Gitpod simplifies the setup by providing a `gnoland` node, a `gnoweb` server, and a pre-configured terminal with the `gno` CLI.
 
-1. Simply click on the button below.
+1. Just click the button below.
 2. Start hacking!
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new/#https://github.com/gnolang/getting-started)
@@ -26,7 +29,7 @@ Gitpod makes it easy to start by providing a `gnoland` node, a `gnoweb` server, 
 
 ## Gno IDE
 
-_coming soon_
+_Coming soon_
 
 ## Resources
 
