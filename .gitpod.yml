@@ -11,6 +11,12 @@ tasks:
         go install github.com/gnolang/gno/gnovm/cmd/gno
     command: gno --help
 
+  - name: Gnokey CLI
+    init: |
+      go mod download
+      go install github.com/gnolang/gno/gno.land/cmd/gnokey
+    command: gnokey --help
+
   - name: Gnoland
     before: cd ../gno/gno.land/
     init: go install ./cmd/gnoland
