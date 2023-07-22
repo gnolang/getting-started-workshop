@@ -1,26 +1,28 @@
-# Learn to use Gnokey
+# Learn to Use Gnokey
 
-`gnokey` allows you to manage accounts and interact with gno.land instances, including a local devnet.
+## Import the `test1` Wallet
 
-## Import the `test1` wallet
+To import the `test1` wallet, use the following command:
 
-The `test1` wallet already has tokens on devnet and staging.
+```console
+gnokey add test1 --recover
+```
 
+Mnemonic:
 
+```console
+source bonus chronic canvas draft south burst lottery vacant surface solve popular case indicate oppose farm nothing bullet exhibit title speed wink action roast
+```
 
-    gnokey add test1 --recover
-
-Use this mnemonic:
-
-    source bonus chronic canvas draft south burst lottery vacant surface solve popular case indicate oppose farm nothing bullet exhibit title speed wink action roast
-    
 Check:
 
-    gnokey list
+```console
+gnokey list
+```
 
 <details>
   <summary>Example...</summary>
-  
+
 ```console
 gitpod /workspace/getting-started (main) $ gnokey list
 
@@ -37,15 +39,18 @@ gitpod /workspace/getting-started (main) $ gnokey list
 ```
 </details>
 
-## Create a new personal wallet
+## Create a New Personal Wallet
 
-Let's create a completely new account now.
+To create a new personal wallet, generate your 24 keywords with the command:
 
-Come with your 24 keywords, or create ones using:
+```console
+gnokey generate
+```
 
-    gnokey generate
+Then follow the instructions for `test1`, but use your chosen name, e.g., `bob`.
 
-Follow instructions for `test1`, but use your own name, i.e., `bob`.
+<details>
+  <summary>Example...</summary>
 
 ```console
 gitpod /workspace/getting-started (main) $ gnokey generate
