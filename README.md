@@ -30,6 +30,7 @@ _coming soon_
 
 ## Resources
 
+- Gno By Example: https://gno-by-example.com
 - Main Repo: https://github.com/gnolang/gno
 - Official Website: https://gno.land
 - Community Content: https://github.com/gnolang/awesome-gno
