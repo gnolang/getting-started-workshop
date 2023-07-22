@@ -34,7 +34,7 @@ func Sign(message string) {
 
 	// TODO: make sure caller hasn't signed the guestbook already
 
-	// append new signature
+	// append new signature -- at the top of the list
 	signatures = append([]Signature{{
 		Message: message,
 		Address: caller,
