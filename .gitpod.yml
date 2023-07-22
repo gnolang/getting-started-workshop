@@ -5,30 +5,27 @@ additionalRepositories:
     checkoutLocation: gno
 
 tasks:
-  - name: Gno Shell
+  - name: Gno CLI
     init: |
-      (
-        set -xe
-        cd ../gno
-        echo "install developer tools"
-        (cd misc/devdeps && make install)
-        echo "download dependencies"
         go mod download
-        # using go.mod's version of gno
         go install github.com/gnolang/gno/gnovm/cmd/gno
-        echo "Deps installed."
-      )
     command: gno --help
 
-  - name: Gnoland Node
+  - name: Gnoland
     before: cd ../gno/gno.land/
     init: go install ./cmd/gnoland
     command: gnoland start
 
-  - name: Gnoland Website
+  - name: Gnoweb
     before: cd ../gno/gno.land/
     init: go install ./cmd/gnoweb
     command: gnoweb --bind=0.0.0.0:8888
+
+  - name: Deps
+    before: cd ../gno/misc/devdeps
+    init: |
+        make install
+        echo "Deps installed."
 
   #- name: faucet
   #  ...
