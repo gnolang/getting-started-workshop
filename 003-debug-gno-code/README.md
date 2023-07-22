@@ -21,3 +21,23 @@ The test fails because `Pop` and `Push` are not implemented properly.
 
 - Implement `Pop` and `Push`
 - Run the test again until it succeeds 
+
+<details>
+    <summary>Solution (only if you're stuck!)</summary>
+
+```
+func Push(s string) {
+    q = append(q, s)
+}
+
+func Pop() string {
+    if len(q) == 0 {
+        return ""
+    }
+    s := q[0]
+    q = q[1:]
+    return s
+}
+```
+
+</details>
