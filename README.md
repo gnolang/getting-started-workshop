@@ -1,11 +1,11 @@
-# Getting Started with Gno
+# :magic_wand: Getting Started with Gno
 
-Welcome to the world of Gno! This repository is your gateway to effortlessly embark on your journey of writing your first Gnolang Realm.
+Welcome to the world of Gno! Through this repository, you can effortlessly embark on a journey to write your first Gno realm -- otherwise known as a smart contract.
 
 ## Suggested Discovery Plan
 
 1. Check out the tutorial section of [Awesome Gno](https://github.com/gnolang/awesome-gno#tutorials) and explore the [YouTube channel](https://www.youtube.com/@_gnoland/videos) for previous workshops and demos.
-2. Learn to use the `gno` CLI to write and test your contracts (`gno test [PATH]`) without relying on a blockchain. It offers speed and convenience.
+2. Learn to use the `gno` CLI to write and test your contracts (`gno test [PATH]`) without relying on a blockchain. It offers speed and convenience, and works similarly to the `go` command line tool.
 3. Master `gnokey` for account management and performing transactions.
 4. Discover how to publish contracts on your local devnet.
 5. Obtain faucet tokens and publish your contracts on https://staging.gno.land or another testnet.
