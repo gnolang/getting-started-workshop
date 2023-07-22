@@ -4,7 +4,6 @@ additionalRepositories:
   - url: https://github.com/gnolang/gno
     checkoutLocation: gno
 
-
 tasks:
   - name: Gno Shell
     init: |
@@ -15,7 +14,8 @@ tasks:
         (cd misc/devdeps && make install)
         echo "download dependencies"
         go mod download
-        go install ./gnovm/cmd/gno
+        # using go.mod's version of gno
+        go install github.com/gnolang/gno/gnovm/cmd/gno
         echo "Deps installed."
       )
     command: gno --help
