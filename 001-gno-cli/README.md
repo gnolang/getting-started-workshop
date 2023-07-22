@@ -1,11 +1,11 @@
-# Getting Started / 001-gno-cli
+# Getting Started with Gno CLI
 
-Learn to use the `gno` CLI to write and test Gnolang packages.
-This part is not relying on a blockchain, but just on the GnoVM.
+In this section, you will learn to use the `gno` CLI to write and test Gnolang packages. This part does not rely on a blockchain; instead, it operates solely on the GnoVM.
 
 ## Steps
 
-* TODO: gno --help
-* TODO: gno test .
-* TODO: gno run (if appropriate)
-* TODO: bonus, gno doc, etc (if makes sense)
+* Use `gno --help` to explore available commands and options.
+* Use `gno test .` to test your Gnolang packages.
+* For additional features, explore `gno doc`, etc.
+
+Enjoy the journey of discovering and mastering the Gno CLI!
