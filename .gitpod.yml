@@ -22,15 +22,10 @@ tasks:
     command: gnoweb --bind=0.0.0.0:8888
 
   - name: Deps
-    before: cd ../gno
-    init:
-        echo "install developer tools"
-        (cd misc/devdeps && make install)
+    before: cd ../gno/misc/devdeps
+    init: |
+        make install
         echo "Deps installed."
-    command: |
-      gnokey --help || true
-      gno --help || true
-
 
   #- name: faucet
   #  ...
