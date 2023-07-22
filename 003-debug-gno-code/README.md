@@ -25,7 +25,7 @@ The test fails because `Pop` and `Push` are not implemented properly.
 <details>
     <summary>Solution (only if you're stuck!)</summary>
 
-```
+```go
 func Push(s string) {
     q = append(q, s)
 }
