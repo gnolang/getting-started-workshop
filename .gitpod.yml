@@ -53,3 +53,7 @@ github:
     addCheck: true
     addComment: true
     addBadge: true
+
+vscode:
+  extensions:
+    - https://marketplace.visualstudio.com/items?itemName=harry-hov.gno
