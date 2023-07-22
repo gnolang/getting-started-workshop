@@ -1,0 +1,55 @@
+# http://gitpod.io/#github.com/gnolang/getting-started-workshop
+
+additionalRepositories:
+  - url: https://github.com/gnolang/gno
+    checkoutLocation: gno
+
+
+tasks:
+  - name: Gno Shell
+    init: |
+      (
+        set -xe
+        cd ../gno
+        echo "install developer tools"
+        (cd misc/devdeps && make install)
+        echo "download dependencies"
+        go mod download
+        go install ./gnovm/cmd/gno
+        echo "Deps installed."
+      )
+    command: gno --help
+
+  - name: Gnoland Node
+    before: cd ../gno/gno.land/
+    init: go install ./cmd/gnoland
+    command: gnoland start
+
+  - name: Gnoland Website
+    before: cd ../gno/gno.land/
+    init: go install ./cmd/gnoweb
+    command: gnoweb --bind=0.0.0.0:8888
+
+  #- name: faucet
+  #  ...
+
+ports:
+  - name: gnoweb
+    description: "the Gno.land web server"
+    port: 8888
+    onOpen: open-preview
+
+  - name: "gnoland RPC"
+    description: "the RPC server, managed by tendermint2"
+    port: 36657
+    onOpen: notify
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: true
+    addBadge: true
