@@ -24,6 +24,11 @@ gnokey maketx addpkg \
 	test1
 ```
 
+**Note:** if you need to re-publish the contract, you will get an error if you
+run the same command again, as for the time being publishing packages is
+permanent and they cannot be modified. So, if you modified the contract, simply
+change the `pkgpath` argument slightly (ie. `gno.land/r/demo/guestbook2`).
+
 ## Browsing the contract
 
 In the source code, there is a `Render` function. This enables us to browse the
