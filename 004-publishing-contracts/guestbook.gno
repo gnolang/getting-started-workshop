@@ -55,8 +55,9 @@ func Render(string) string {
 	// pass to it as markdown.
 	b.WriteString("# Guestbook\n\n")
 	for _, sig := range signatures {
-		if sig.Address == "" {
-			sig.Address = "anonymous coward"
+		a := string(sig.Address)
+		if a == "" {
+			a = "anonymous coward"
 		}
 		// We currently don't have a full fmt package; we have "ufmt" to do basic formatting.
 		// See `gno doc ufmt` for more information.
@@ -64,8 +65,8 @@ func Render(string) string {
 		// If you are unfamiliar with Go time formatting, it is done by writing the way you'd
 		// format a reference time. See `gno doc time.Layout` for more information.
 		b.WriteString(ufmt.Sprintf(
-			"%s\n\n_written by %s at %s_\n\n----\n\n",
-			sig.Message, string(sig.Address), sig.Time.Format("2006-01-02"),
+			"%s\n\n_written by %s on %s_\n\n----\n\n",
+			sig.Message, a, sig.Time.Format("2006-01-02"),
 		))
 
 		// TODO: resolve sig.Address to a username, by using the r/demo/users realm.

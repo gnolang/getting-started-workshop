@@ -16,7 +16,7 @@ From this directory (use the `cd` command in the shell to navigate
 
 ```
 gnokey maketx addpkg \
-	--gas-wanted 1000000 \
+	--gas-wanted 10000000 \
 	--gas-fee 1ugnot \
 	--pkgpath gno.land/r/demo/guestbook \
 	--pkgdir . \
@@ -173,6 +173,22 @@ You can inspect it and register yourself as a user of the realm.
 We can make our guestbook nicer by referring to users using their username
 instead of their address...
 
+Here's a sample command to register a user (note the `--send` argument -- we use
+this to register without being "invited"):
+
+```
+gnokey maketx call \
+	-pkgpath "gno.land/r/demo/users" \
+	-func "Register" \
+	-gas-fee 1000000ugnot \
+	-gas-wanted 2000000 \
+	-send "200000000ugnot" \
+	-broadcast \
+	-chainid "dev" \
+	-args "" -args "torvalds" -args "https://github.com/torvalds" \
+	-remote "127.0.0.1:26657" test1
+```
+
 <details>
 	<summary>Hint</summary>
 
@@ -194,10 +210,11 @@ func Render(string) string {
 	// pass to it as markdown.
 	b.WriteString("# Guestbook\n\n")
 	for _, sig := range signatures {
-		if sig.Address == "" {
-			sig.Address = "anonymous coward"
+		a := string(sig.Address)
+		if a == "" {
+			a = "anonymous coward"
 		} else if u := users.GetUserByAddress(sig.Address); u != nil {
-			sig.Address = ufmt.Sprintf("[@%s](/r/demo/users:%s)",
+			a = ufmt.Sprintf("[@%s](/r/demo/users:%s)",
 				u.Name(), u.Name())
 		}
 		// We currently don't have a full fmt package; we have "ufmt" to do basic formatting.
@@ -207,7 +224,7 @@ func Render(string) string {
 		// format a reference time. See `gno doc time.Layout` for more information.
 		b.WriteString(ufmt.Sprintf(
 			"%s\n\n_written by %s at %s_\n\n----\n\n",
-			sig.Message, string(sig.Address), sig.Time.Format("2006-01-02"),
+			sig.Message, a, sig.Time.Format("2006-01-02"),
 		))
 	}
 	return b.String()
