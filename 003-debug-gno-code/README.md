@@ -12,8 +12,8 @@ run when using `gno test`. If the function calls `t.Errorf`, then it is
 considered failed.
 
 - `queue.gno`, in this tutorial's directory `003-debug-gno-code`, is a source file containing 2 stub functions `Push` and `Pop`. Your goal in this tutorial is to implement them correctly and see the tests succeed.
-- `queue_test.gno` contains a test that asserts the expected behavior of `Pop` and
-`Push`.
+- `queue_test.gno` contains a test that checks the behavior of `Pop` and `Push`.
+  If you implement them correctly, running `gno test` will succeed without errors.
 
 ## Steps
 
