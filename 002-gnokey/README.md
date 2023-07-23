@@ -2,7 +2,7 @@
 
 ## Import the `test1` Wallet
 
-To import the `test1` wallet, use the following command:
+To import the `test1` wallet (10^13ugnot in genesis), use the following command:
 
 ```console
 gnokey add test1 --recover
