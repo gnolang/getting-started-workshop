@@ -4,7 +4,12 @@ In this section, you will learn to debug your Gno contract. As contracts aren't
 modifiable, it is crucial to debug them properly before their publication to
 the blockchain.
 
-As you will see Gno debugging is pretty much the same as Go debugging.
+Debugging Gno code functions in many ways as in Go;
+the biggest tool at our disposal are test files. These are identified
+as source files whose names end with `_test.go`. Every function of
+the kind `func TestXxx(t *testing.T)` is automatically added as a test,
+run when using `gno test`. If the function calls `t.Errorf`, then it is
+considered failed.
 
 - `queue.gno` in this section implements a basic FIFO queue with 2 functions
 `Push` and `Pop`.
