@@ -25,7 +25,9 @@ The test will fail, because `Pop` and `Push` are currently not
 implemented -- if you open the `queue.gno` file, you will see
 that they just contain two `// TODO` comments.
 
-- Implement `Pop` and `Push`
+- Implement `Pop` and `Push`. These need to implement a
+  FIFO (First In, First Out) queue -- so the last element added
+  using `Push` will be the first one to be removed using `Pop`.
 - Run the test again until it succeeds 
 
 <details>
