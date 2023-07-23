@@ -11,8 +11,7 @@ the kind `func TestXxx(t *testing.T)` is automatically added as a test,
 run when using `gno test`. If the function calls `t.Errorf`, then it is
 considered failed.
 
-- `queue.gno` in this section implements a basic FIFO queue with 2 functions
-`Push` and `Pop`.
+- `queue.gno`, in this tutorial's directory `003-debug-gno-code`, is a source file containing 2 stub functions `Push` and `Pop`. Your goal in this tutorial is to implement them correctly and see the tests succeed.
 - `queue_test.gno` contains a test that asserts the expected behavior of `Pop` and
 `Push`.
 
