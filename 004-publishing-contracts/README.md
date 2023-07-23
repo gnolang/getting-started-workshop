@@ -110,3 +110,129 @@ to different results. Gno code, in contracts, like all other smart contracts,
 must be **deterministic** and always have the same results if it's given the
 same starting context -- which is why we provide global variables as a solution
 for storing data.
+
+### Deterministic time
+
+The careful observer may note that `time.Now()` is not a deterministic value, as by
+definition it is always changing and "should" be different each time the program
+is executed. However, to enable the use of time.Now() in blockchain, this will
+actually represent the _block time_.
+
+In a blockchain, a new "block" is created after a given amount of time. This
+will roughly match the current time; but note the value does not change during
+the execution of the program, and as such `time.Now()` cannot be used to
+benchmark a program -- it is just a rough idea of what time the transaction is
+executed.
+
+### The difference between realms and packages
+
+As you've learned, realms have the distinctive feature of being able to persist
+their global variables. The underlying idea here is that realms are end-user
+smart contracts; which is why they also support the `Render()` function for
+viewing their data on the web.
+
+In `guestbook.gno`, however, we make an import of package
+`gno.land/p/demo/ufmt`. This is an example of a _package_ (as opposed to a
+_realm_) -- it is distinct from a realm because its import path starts with
+`gno.land/p/` instead of `gno.land/r/`.[^1]
+
+Packages behave like normal Go packages, or similar concepts of other
+programming languages: they are reusable pieces of code which are meant as
+"building blocks" to build complex software. They don't persist any data, nor
+their functions can be executed as smart contracts.
+
+## Keep going
+
+There are two more challenges for you in `guestbook.gno`: you can find them in
+the `TODO` comments.
+
+The first one is to prevent a user from signing the guestbook more than once,
+aborting the transaction entirely. In Gno, you can abort transactions by using
+the `panic()` function.
+
+<details>
+	<summary>Sample solution (only if you're stuck!)</summary>
+
+```go
+for _, sig := range signatures {
+	if sig.Address == caller {
+		panic("you have already signed the guestbook!")
+	}
+}
+```
+
+</details>
+
+The second one is to use the `gno.land/r/demo/users` realm to render usernames.
+The `users` realm is a "username registry" which is used in
+other example realms, like [`microblog`](https://github.com/gnolang/gno/tree/master/examples/gno.land/p/demo/microblog),
+[`boards`](https://github.com/gnolang/gno/tree/master/examples/gno.land/p/demo/boards)
+and [`groups`](https://github.com/gnolang/gno/tree/master/examples/gno.land/p/demo/groups).
+You can inspect it and register yourself as a user of the realm.
+
+We can make our guestbook nicer by referring to users using their username
+instead of their address...
+
+<details>
+	<summary>Hint</summary>
+
+To call other realms in Gno, we simply have to import them at the top of the
+file in the `import` statement. After doing that, you can use the function
+`users.GetUserByAddress` to see if there is a matching User.
+
+</details>
+
+<details>
+	<summary>Sample solution (only if you're stuck!)</summary>
+
+```go
+// add import: "gno.land/r/demo/users"
+
+func Render(string) string {
+	b := new(strings.Builder)
+	// gnoweb, which is the HTTP frontend we're using, will render the content we
+	// pass to it as markdown.
+	b.WriteString("# Guestbook\n\n")
+	for _, sig := range signatures {
+		if sig.Address == "" {
+			sig.Address = "anonymous coward"
+		} else if u := users.GetUserByAddress(sig.Address); u != nil {
+			sig.Address = ufmt.Sprintf("[@%s](/r/demo/users:%s)",
+				u.Name(), u.Name())
+		}
+		// We currently don't have a full fmt package; we have "ufmt" to do basic formatting.
+		// See `gno doc ufmt` for more information.
+		//
+		// If you are unfamiliar with Go time formatting, it is done by writing the way you'd
+		// format a reference time. See `gno doc time.Layout` for more information.
+		b.WriteString(ufmt.Sprintf(
+			"%s\n\n_written by %s at %s_\n\n----\n\n",
+			sig.Message, string(sig.Address), sig.Time.Format("2006-01-02"),
+		))
+	}
+	return b.String()
+}
+```
+
+</details>
+
+## Recap
+
+1. By using the `gnokey maketx addpkg`, we can add a new package or realm to the
+   blockchain.
+2. Packages are reusable "building blocks" of code. Realms are "special
+   packages" which:
+   - Can persist state in their global variables
+   - Can have their functions called as smart contracts, using `gnokey`
+   - Can be rendered through the web frontend, using the special `Render` function
+3. Using the `[help]` page of gnoweb, we can construct transactions to smart
+   contracts we've created.
+4. All Gno code must be deterministic and run exactly the same independent of
+   the machine. We are still allowed to use `time.Now()` -- however that will
+   actually return the block time instead of the machine's clock time.
+5. We can make calls to other realms with their state by simply importing their
+   path in our Gno code.
+
+-----
+
+[^1]: at the moment, all code uploaded to the chain must have an import path starting with either of the two.
