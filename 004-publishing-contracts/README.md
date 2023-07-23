@@ -45,7 +45,7 @@ will also be able to see a list of the exported functions of the realm, and
 instructions on how to execute them using `gnokey`.
 
 By modifying the fields, you can interactively set up your `gnokey` command, and
-make it say whatever you want it to.
+make it do whatever you want it to.
 
 ![A screenshot of a simple configuration of gnokey, that we will use
 later.](./screenshot.png)
