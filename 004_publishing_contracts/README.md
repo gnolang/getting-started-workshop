@@ -255,6 +255,4 @@ func Render(string) string {
 5. We can make calls to other realms with their state by simply importing their
    path in our Gno code.
 
------
-
 [^1]: at the moment, all code uploaded to the chain must have an import path starting with either of the two.
