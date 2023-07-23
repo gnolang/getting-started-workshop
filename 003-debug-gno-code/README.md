@@ -19,7 +19,7 @@ considered failed.
 
 - Run the test:
 ```
-$ gno test . -verbose -run TestQueue
+$ gno test . -verbose
 ```
 The test fails because `Pop` and `Push` are not implemented properly.
 
