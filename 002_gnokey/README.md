@@ -1,5 +1,14 @@
 # Learn to Use Gnokey
 
+`gnokey` is the command line tool for interacting with a blockchain node. It
+allows you to make blockchain transactions, publish new packages, and in general
+do any operation with a remote or local blockchain node.
+
+We're going to start by importing a test wallet which has a lot of tokens --
+allowing you to freely play around. We'll then show you how you can create your
+own wallet, although it will have no keys by default on the devnet -- but it can
+be useful to play around with the online testnet.
+
 ## Import the `test1` Wallet
 
 To import the `test1` wallet (10^13ugnot in genesis), use the following command:
@@ -72,19 +81,28 @@ $ gnokey list
 
 ## Interact with the `r/demo/boards` Realm
 
-TODO: improve and explain
+Now that we have set up an account, let's try interacting with a smart contract.
 
-gitpod /workspace/gno/misc/devdeps (dev/moul/002-gnokey) $ gnokey maketx call -pkgpath "gno.land/r/demo/boards" -func "CreateReply" -gas-fee 1000000ugnot -gas-wanted 2000000 -send "100000000ugnot" -broadcast -chainid "dev" -args "1" -args "5" -args "5" -args "Hello 👋" -remote "localhost:26657
-" test1
+```console
+$ gnokey maketx call \
+	-pkgpath "gno.land/r/demo/boards" \
+	-func "CreateThread" \
+	-gas-fee 1000000ugnot \
+	-gas-wanted 2000000 \
+	-send "100000000ugnot" \
+	-broadcast \
+	-chainid "dev" \
+	-args "1" \
+	-args "Hello world\!" \
+	-args "Just fooling around with creating a new thread on r/demo/boards." \
+	-remote "127.0.0.1:26657" test1
 Enter password.
-(6 gno.land/r/demo/boards.PostID)
+(7 gno.land/r/demo/boards.PostID)
 OK!
 GAS WANTED: 2000000
-GAS USED:   979800
+GAS USED:   1043320
+```
 
-
-TODO: explain that it works on staging
-
-TODO: explain faucet on staging
-
-TODO: another example like banker
+If you click on `r/demo/boards` from the browser in the top-right corner of
+Gitpod, and browse to testboard, you should now be able to see a "Hello world!"
+post with the test1 address at the bottom of the page.
