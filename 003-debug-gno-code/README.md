@@ -21,7 +21,9 @@ considered failed.
 ```
 $ gno test . -verbose
 ```
-The test fails because `Pop` and `Push` are not implemented properly.
+The test will fail, because `Pop` and `Push` are currently not
+implemented -- if you open the `queue.gno` file, you will see
+that they just contain two `// TODO` comments.
 
 - Implement `Pop` and `Push`
 - Run the test again until it succeeds 
