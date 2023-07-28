@@ -2,6 +2,8 @@
 
 Welcome to the world of Gno! Through this repository, you can effortlessly embark on a journey to write your first Gno realm -- otherwise known as a smart contract.
 
+Before you begin, we highly recommend exploring [Gno By Example](https://gno-by-example.com) to familiarize yourself with Gno's foundational concepts.
+
 ## Suggested Discovery Plan
 
 1. Check out the tutorial section of [Awesome Gno](https://github.com/gnolang/awesome-gno#tutorials) and explore the [YouTube channel](https://www.youtube.com/@_gnoland/videos) for previous workshops and demos.
